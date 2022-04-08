@@ -1,0 +1,15 @@
+tags$style(HTML('.box {margin: 5px;}' ))
+tags$style(HTML(".shiny-text-output { background-color: #fefeff; }"))
+tags$style(HTML('.content-wrapper { background-color: #fefeff;}'))
+tags$style(HTML(".box.box-solid.box-primary>.box-header {}.box.box-solid.box-primary{background:#fefeff;}"))
+tags$style(HTML('.selectize-input {white-space: nowrap}
+#chap+ div>.selectize-dropdown{width: 330px !important, height: 200px; padding-top: 0px; }}'))
+tags$style(HTML('.form-group, .selectize-control { margin-bottom: 0px;}.box-body {padding-bottom: 0px;}'))
+
+tags$style(HTML(".box-header h3.box-title {
+   font-weight: bold;
+   font-size: 24px;
+}"))
+tags$script(HTML("$('.box').eq(0).css('background-color', 'white');")),
+
+

@@ -1,0 +1,18 @@
+---
+title: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 
+
+The "One Click Away" survey was conducted with a nationally representative sample of children who use the Internet of age 9 to 17 years in Albania. It included a total of 1,000 children from three different age groups (9–11, 12–14 and 15–17 years) and 1,000 of their parents or guardians. 
+
+
+Interviews were conducted in the respondents’ households, using Computer-Assisted Personal Interviewing (CAPI), in the presence of both interviewee and interviewer. The survey is in line with the ethical principles developed by UNICEF that guarantee the safety of the participants and their data and respect for their rights. In order to respect the principle of child privacy and minimise any potential negative impacts of participation in the survey, some sections in the questionnaire were self-administered. 
+
+The questionnaire was designed along the lines of the above-mentioned dimensions, grouped into five areas: access, opportunities and practices, skills, risks, and vulnerability and protection factors. The data collection tools and procedures were reviewed and approved by an External Ethical Board, commissioned by UNICEF Albania.
+
