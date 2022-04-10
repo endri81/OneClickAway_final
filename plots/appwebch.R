@@ -1,5 +1,5 @@
 library(tidyverse)
-chintaccess <- read_excel("data/chintaccess.xlsx")
+appwebch <- read_excel("data/appwebch.xlsx", na = "0")
 
 ############################################### 
 ## Digital Skills  ----  
@@ -8,18 +8,18 @@ chintaccess <- read_excel("data/chintaccess.xlsx")
 data_digital <- reactive({
   # Return the appropriate data source depending on
   # the chosen radio button
-  if (input$ind_chintaccess == "age") {
-    data_dig <- chintaccess %>% select("Question", "9 - 11", "12 - 14", "15 - 17" ) %>%
+  if (input$ind_appwebch == "age") {
+    data_dig <- appwebch %>% select("Application", "9 - 11", "12 - 14", "15 - 17" ) %>%
       gather("age_group", "age_value", "9 - 11", "12 - 14", "15 - 17")
     
-  } else if (input$ind_chintaccess == "gender") {
-    data_dig <- chintaccess %>% select("Question", Male, Female) %>%
+  } else if (input$ind_appwebch == "gender") {
+    data_dig <- appwebch %>% select("Application", Male, Female) %>%
       gather("gender", "gender_value", "Male", "Female")  
     
   }
   
-  else if (input$ind_chintaccess == "total") {
-    data_dig <- chintaccess %>% select("Question", "Total")
+  else if (input$ind_appwebch == "total") {
+    data_dig <- appwebch %>% select("Application", "Total")
     
   }
   return(data_dig)
@@ -35,12 +35,12 @@ output$pageStub <- renderUI(fluidPage(
 
    # Application title
   
-   titlePanel(h1("Are you able to access the internet when you want to or need to?", align = "center")),
+   titlePanel(h1("Frequency of activities practiced weekly or more often by children", align = "center")),
 
    column(3,
           wellPanel(style = "background: #ffffff", 
             pickerInput(
-              inputId = "ind_chintaccess",
+              inputId = "ind_appwebch",
               label = "Select metrics", 
               choices = c("Age" = "age", "Gender" = "gender", "Total" = "total"),
               options = list(
@@ -53,26 +53,29 @@ output$pageStub <- renderUI(fluidPage(
    column(9,
 
 wellPanel(style = "background: #ffffff", 
-        plotlyOutput("chintaccess")
+        plotlyOutput("appwebch")
       )
    )
+
 ))
 
 
-output$chintaccess <- renderPlotly({
+
+
+output$appwebch <- renderPlotly({
   
     
-    if (input$ind_chintaccess == "age")
+    if (input$ind_appwebch == "age")
     {
       fig <- plot_ly(data = data_digital(),
                      x = ~age_value, 
-                     y = ~Question, 
+                     y = ~Application, 
                      type = 'bar', 
                      color = ~age_group,
                      colors = brewer.pal(n = 3, "Paired")) %>%
-        layout(title="Parents ability to access the internet",
+        layout(title= "How often you have done these things online in the past month?",
                yaxis=list(title = "", standoff = 20L),
-               xaxis=list(title = "Age Groups"),
+               xaxis=list(title = "Base: Total Target population (n = 1000 children)"),
                barmode= "stack") %>% config(displaylogo = FALSE,
                                             modeBarButtonsToRemove = list(
                                               'sendDataToCloud',
@@ -80,21 +83,20 @@ output$chintaccess <- renderPlotly({
                                               'resetScale2d',
                                               'hoverClosestCartesian',
                                               'hoverCompareCartesian'
-                                            ))
-
+                                            )) 
       
     }         
-    else if (input$ind_chintaccess == "gender")
+    else if (input$ind_appwebch == "gender")
     {
       fig <- plot_ly(data = data_digital(),
                      x = ~gender_value, 
-                     y = ~Question, 
+                     y = ~Application, 
                      type = 'bar', 
                      color = ~gender,
                      colors = brewer.pal(n = 3, "Paired")) %>%
-        layout(title="Parents ability to access the internet",
+        layout(title= "How often you have done these things online in the past month?",
                yaxis=list(title = "", standoff = 20L),
-               xaxis=list(title = "Gender"),
+               xaxis=list(title = "Base: Total Target population (n = 1000 children)"),
                barmode= "stack") %>% config(displaylogo = FALSE,
                                             modeBarButtonsToRemove = list(
                                               'sendDataToCloud',
@@ -102,18 +104,18 @@ output$chintaccess <- renderPlotly({
                                               'resetScale2d',
                                               'hoverClosestCartesian',
                                               'hoverCompareCartesian'
-                                            ))
+                                            )) 
     }
     else  {
       fig <- plot_ly(data = data_digital(),
                      x = ~Total, 
-                     y = ~Question, 
+                     y = ~Application, 
                      type = 'bar', 
                      color = ~Total,
                      colors = brewer.pal(n = 3, "Paired")) %>%
-        layout(title="Parents ability to access the internet",
+        layout(title= "How often you have done these things online in the past month?",
                yaxis=list(title = "", standoff = 20L),
-               xaxis=list(title = "Total"),
+               xaxis=list(title = "Base: Total Target population (n = 1000 children)"),
                barmode= "stack") %>% config(displaylogo = FALSE,
                                             modeBarButtonsToRemove = list(
                                               'sendDataToCloud',
@@ -123,5 +125,7 @@ output$chintaccess <- renderPlotly({
                                               'hoverCompareCartesian'
                                             ))
  
-}
+    }
+  
+  
 })

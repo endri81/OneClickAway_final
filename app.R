@@ -174,7 +174,79 @@ shinyApp(
           fluidPage(                                  #     move the ui into the server function
             fluidRow(
               column(12,
-                     includeHTML("./html/aipr.html")
+                     includeHTML("./html/parintaccess.html")
+              )
+            ),
+            uiOutput("pageStub")                     # loaded server code should render the
+          )                                           #    rest of the page to this output$
+        ))
+      }
+      else if (input$chap == "2" & input$cat == "1") {
+        output$uiStub <- renderUI(tagList(             # a single-output stub ui basically lets you
+          fluidPage(                                  #     move the ui into the server function
+            fluidRow(
+              column(12,
+                     includeHTML("./html/onlineactchild.html")
+              )
+            ),
+            uiOutput("pageStub")                     # loaded server code should render the
+          )                                           #    rest of the page to this output$
+        ))
+      }
+      else if (input$chap == "2" & input$cat == "2") {
+        output$uiStub <- renderUI(tagList(             # a single-output stub ui basically lets you
+          fluidPage(                                  #     move the ui into the server function
+            fluidRow(
+              column(12,
+                     includeHTML("./html/onlineactpar.html")
+              )
+            ),
+            uiOutput("pageStub")                     # loaded server code should render the
+          )                                           #    rest of the page to this output$
+        ))
+      }
+      else if (input$chap == "3" & input$cat == "1") {
+        output$uiStub <- renderUI(tagList(             # a single-output stub ui basically lets you
+          fluidPage(                                  #     move the ui into the server function
+            fluidRow(
+              column(12,
+                     includeHTML("./html/onlineriskchild.html")
+              )
+            ),
+            uiOutput("pageStub")                     # loaded server code should render the
+          )                                           #    rest of the page to this output$
+        ))
+      }
+      else if (input$chap == "3" & input$cat == "2") {
+        output$uiStub <- renderUI(tagList(             # a single-output stub ui basically lets you
+          fluidPage(                                  #     move the ui into the server function
+            fluidRow(
+              column(12,
+                     includeHTML("./html/onlineriskpar.html")
+              )
+            ),
+            uiOutput("pageStub")                     # loaded server code should render the
+          )                                           #    rest of the page to this output$
+        ))
+      }
+      else if (input$chap == "4" & input$cat == "1") {
+        output$uiStub <- renderUI(tagList(             # a single-output stub ui basically lets you
+          fluidPage(                                  #     move the ui into the server function
+            fluidRow(
+              column(12,
+                     includeHTML("./html/mediachild.html")
+              )
+            ),
+            uiOutput("pageStub")                     # loaded server code should render the
+          )                                           #    rest of the page to this output$
+        ))
+      }
+      else if (input$chap == "4" & input$cat == "2") {
+        output$uiStub <- renderUI(tagList(             # a single-output stub ui basically lets you
+          fluidPage(                                  #     move the ui into the server function
+            fluidRow(
+              column(12,
+                     includeHTML("./html/mediapar.html")
               )
             ),
             uiOutput("pageStub")                     # loaded server code should render the
@@ -196,7 +268,7 @@ shinyApp(
     ))
     
     # load server code for page specified in URL
-    validFiles = c("chintaccess","parintusage.R", "parintability.R", "parintreasons", "parintfreq")                     #    for security (use all lower-case
+    validFiles = c("chintaccess.R","parintaccess.R")                     #    for security (use all lower-case
     #    names to prevent Unix case problems)
     fname = isolate(session$clientData$url_search)       # isolate() deals with reactive context
     if(nchar(fname)==0) { fname = "?chintaccess" }              # blank means home page
@@ -204,7 +276,17 @@ shinyApp(
     
     cat(paste0("Session filename: ", fname, ".\n"))      # print the URL for this session
     
+
     source(fname, local=TRUE)                            # load and run server code for this page
+    
+    
+    
+    
+    
+    
+    
+    
+    
     output$about <- renderText({
       paste('<p>This interactive dashboard visualizes the findings of "One Click Away" Children&rsquo;s experience of Internet use in Albania. It presents the scientific evidence on how children use the Internet, what they are learning, the opportunities and risks they face and what parents know and don&rsquo;t know about their children&rsquo;s virtual reality. It explores the experiences of children across various dimensions of their use of the Internet and generates and sustains a rigorous cross-national comparative evidence base. In addition, the study explores the Internet use of parents and to what extent they mediate their children&rsquo;s online experiences.</p>
 <p style="text-align: justify;">"One click away" was conducted in 2019 by IPSOS and UNICEF Albania and forms part of a global research project, Global Kids Online, coordinated by the UNICEF Office of Research Innocenti, the London School of Economics and Political Science (LSE) and the European Union (EU) Kids Online network. Prepared in the framework of the &lsquo;Safer and Better Internet for Children in Albania&rsquo; programme, the study was supported by the Fund to End Violence against Children.</p>
