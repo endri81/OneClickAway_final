@@ -5,9 +5,9 @@ account: endriraco
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6046714
-bundleId: 5784214
+bundleId: 5789846
 url: https://endriraco.shinyapps.io/OneClickAway/
-when: 1649613164.52613
-lastSyncTime: 1649613164.52613
+when: 1649759480.99342
+lastSyncTime: 1649759480.99342
 asMultiple: FALSE
 asStatic: FALSE
