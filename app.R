@@ -268,7 +268,19 @@ shinyApp(
     ))
     
     # load server code for page specified in URL
-    validFiles = c("chintaccess.R","parintaccess.R")                     #    for security (use all lower-case
+    validFiles = c("chintaccess.R", "afterconch.R", "afterconpar.R", "appwebch.R", "bullyfeelch.R",
+"checkintch.R", "checkintpar.R", "childeverpar.R",  "conpar.R",  "cursourcepar.R", 
+"dealuppar.R",  "desourcepar.R", "digbullych.R",  "digskillch.R", "everch.R",       
+"facemeetch.R", "freqactch.R",   "freqintch.R", "friendrespondch.R", "hatesch.R",
+"helpcoppar.R", "intabpar.R", "intusepar.R",  "intusfreqpar.R", "invsexch.R",    
+"lasttimepar.R", "measurech.R", "measurepar.R", "meetreactch.R",  "nastytreatch.R", 
+"negconch.R", "negonch.R",  "onlinexpch.R", "onlriskch.R",  "parconch.R",       
+"pardigskill.R", "placesintch.R", "protectch.R", "reaslimch.R", "reaslimpar.R",
+"repupsetch.R",  "restrictch.R",  "restrictpar.R",  "sexexpch.R", "sexexpmeanch.R",
+"sexexpunwantch.R", "sexfeelch.R", "sexintch.R",  "sexmesch.R",  "sexmesentch.R",    
+"sexplexpch.R", "sexsitch.R", "supportch.R",  "thinglastpar.R", "treatlastpar.R",    "unknowncontch.R" , 
+"unwantsexintch.R", "upsetlastpar.R", "upsetlevelch.R",    "upsetpar.R", "upsetreactch.R",
+"violconch.R", "weblastpar.R")                     #    for security (use all lower-case
     #    names to prevent Unix case problems)
     fname = isolate(session$clientData$url_search)       # isolate() deals with reactive context
     if(nchar(fname)==0) { fname = "?chintaccess" }              # blank means home page
